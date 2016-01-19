@@ -14,10 +14,10 @@ import urllib
 import simplejson
 import time
 
-file = open(sys.argv[1], "r")
-hashes = file.readlines();
+file = open(sys.argv[1], 'r')
+hashes = file.readlines()
 
-pkey = 'enter private key here'
+pkey = open('pkey.conf', 'r').readline()
 url = "https://www.virustotal.com/vtapi/v2/file/report"
 
 def get_25(file=None):
@@ -42,11 +42,11 @@ def get_detections(hashes):
             print '%s %s / %s' % (result['resource'], result['positives'], result['total'])
     except:
         print '%s X' % hashes
-    # Avoid rate limiting
-    time.sleep(60 / 4)
 
 while len(hashes) > 0:
     subset = get_25(hashes)
     get_detections(subset)
+    # Stupid avoid rate limiting
+    time.sleep(60 / 4)
 
 print 'Done.'
