@@ -3,7 +3,7 @@
 """detection_ratio.py: Read a file of resource ids (hashes) and retrieve the detection ratios from VirusTotal"""
 
 __author__ = "Tim 'diff' Strazzere"
-__copyright__  = "Copyright 2015, Red Naga"
+__copyright__  = "Copyright 2016, Red Naga"
 __license__ = "GPL"
 __version__ = "1.0"
 
@@ -18,7 +18,7 @@ file = open(sys.argv[1], 'r')
 hashes = file.readlines()
 
 pkey = open('pkey.conf', 'r').readline()
-url = "https://www.virustotal.com/vtapi/v2/file/report"
+url = 'https://www.virustotal.com/vtapi/v2/file/report'
 
 def get_25(file=None):
     new_array = []
@@ -31,8 +31,8 @@ def get_25(file=None):
 
 def get_detections(hashes):
     try:
-        parameters = {"resource" : ','.join(map(str, hashes)),
-                      "apikey" : pkey }
+        parameters = {'resource' : ','.join(map(str, hashes)),
+                      'apikey' : pkey }
         data = urllib.urlencode(parameters)
         req = urllib2.Request(url, data)
         response = urllib2.urlopen(req)
