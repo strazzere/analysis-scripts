@@ -68,7 +68,6 @@ while True:
         break
     else:
         print ' [+] Going through pagination...'
-        print ' [!] %s' % feed['next']
         feed = get_notifications(filter=rule_name, page=feed['next'])
 
 hashes_out = open('%s.hashes' % rule_name, 'w')
