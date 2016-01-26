@@ -7,7 +7,7 @@ __copyright__  = "Copyright 2016, Red Naga"
 __license__ = "GPL"
 __version__ = "1.0"
 
-
+import os
 import sys
 import urllib2
 import urllib
@@ -45,3 +45,6 @@ if result['received'] != len(notifications):
     print ' [-] Potentially an issue, have %d, however VTi only saw %d!' % (len(notifications), result['received'])
 print ' [+] Attempted to delete %d notifications, %d deletions have been confirmed.' % (len(notifications), result['deleted'])
 print ' [*] Result code : %d' % (result['result'])
+if result['result'] == 1:
+    os.remove(sys.argv[1])
+    print ' [!] %s removed!' % sys.argv[1]
