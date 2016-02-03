@@ -45,4 +45,6 @@ for hash in pbar(hashes):
     except:
         print('Issue saving data for %s' % hash)
 
-print('\nDone.')
+os.remove(sys.argv[1])
+print ' [!] %s removed!' % sys.argv[1]
+print('[*] Done.')
